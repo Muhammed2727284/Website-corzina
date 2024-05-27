@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<h1>список оплат</h1>
+    <h2>Истоия</h2>
+    
+    {% for data in history %}
+        <a href="{% url 'history-detail' data.id %}"><p>{{ data }}</p></a>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<h1>список</h1>
+    <h2>не оплаченных долгов</h2>
+    
+    <p><button><a href="{% url 'create-dolg' %}">Создат долг</button></a></p>
+    
+    {% for data in object_list %}
+        <a href="{% url 'detail-dolg' data.id %}"><p>{{ data }}</p></a>
+    {% endfor %}
+{% endblock %}

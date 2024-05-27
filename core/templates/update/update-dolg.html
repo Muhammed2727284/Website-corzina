@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}создание долгов{% endblock %}
+
+
+{% block content %}
+<h1>update dolg</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <p> кассир{{ form.user }}</p>
+    <p>клиент{{ form.client }}</p>
+    <p>клиент{{ form.phone_number }}</p>
+    <p>сумма{{ form.summa }}</p>
+    <p>описание{{ form.description }}</p>
+    <p><button type="submit">Submit</button></p>
+    <a href="{% url 'list-dolg' %}">cancel</a>
+</form>
+{% endblock %}

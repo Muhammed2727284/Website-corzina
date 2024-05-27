@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<h1>detail history</h1>
+
+    <p>{{ object }}</p>
+    <button><a href="{% url 'recovery' object.id %}">Востоновить</a></button>
+    <button><a href="{% url 'history-list' %}">в список оплат</a></button>
+
+{% endblock %}
