@@ -19,6 +19,8 @@ class Dolg(models.Model):
     date_deleted = models.DateTimeField(blank=True, null=True, verbose_name='Дата удаление')
     user_deleted = models.ForeignKey('UserIndexMagazine', on_delete=models.CASCADE, blank=True, null=True, related_name='user_deleted', verbose_name='Кассир удаление')
 
+    payment_comment = models.TextField(verbose_name='Комментарий к оплате', blank=True)
+
     def __str__(self):
         return f"Карыз: {self.client}, сумма: {self.summa}"
 
@@ -31,7 +33,7 @@ class Magazine(models.Model):
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
-        return f"Магазин: {self.name_magazine}"
+        return f"{self.name_magazine}"
 
 
 class UserIndexMagazine(models.Model):
@@ -40,4 +42,4 @@ class UserIndexMagazine(models.Model):
     date_create_index_user = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание индекс пользователя')
 
     def __str__(self):
-        return f"Индекс: кассир {self.user}, маг: {self.magazine}"
+        return f"{self.user} - {self.magazine}"
