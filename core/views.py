@@ -19,8 +19,6 @@ def custom_404_view(request, exception):
     return render(request, '404/404.html', status=404)
 
 # list dog
-
-# Create your views here.
 @login_required
 def core(request):
     return render(request, 'core.html')
@@ -37,6 +35,16 @@ class CreateDolg(LoginRequiredMixin, CreateView):
     form_class = DolgForm
     template_name = 'create/create-dolg.html'
     success_url = reverse_lazy('list-dolg')
+
+    def form_valid(self, form):
+        # Получаем текущего пользователя
+        user_index_magazine = self.request.user.userindexmagazine_set.first()
+
+        # Устанавливаем пользователя для объекта Dolg
+        form.instance.user = user_index_magazine
+
+        # Вызываем родительский метод для сохранения формы
+        return super().form_valid(form)
 
 class ListDolg(LoginRequiredMixin, View):
     login_url = reverse_lazy('login')  # URL to redirect to for login

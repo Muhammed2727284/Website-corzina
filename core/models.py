@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
+
 # Create your models here.
 class Dolg(models.Model):
     user = models.ForeignKey('UserIndexMagazine', on_delete=models.CASCADE, verbose_name='Кассир')
@@ -25,6 +27,8 @@ class Dolg(models.Model):
         return f"Карыз: {self.client}, сумма: {self.summa}"
 
 
+
+
 class Magazine(models.Model):
     name_magazine = models.CharField(max_length=255, verbose_name='Имя магазина')
     phone_magazine = models.CharField(max_length=255, verbose_name='Телефон магазина')
@@ -43,3 +47,5 @@ class UserIndexMagazine(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.magazine}"
+
+

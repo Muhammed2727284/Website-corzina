@@ -4,15 +4,12 @@
 
 
 {% block content %}
-<h1>Create dolg</h1>
+    <h1>Create dolg</h1>
 
-<form method="post" action="">
-    {% csrf_token %}
-    <p> кассир{{ form.user }}</p>
-    <p>клиент{{ form.client }}</p>
-    <p>сумма{{ form.summa }}</p>
-    <p>описание{{ form.description }}</p>
-    <p>телефон{{ form.phone_number }}</p>
-    <p><button type="submit">Submit</button></p>
-</form>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Создать</button>
+    </form>
 {% endblock %}
