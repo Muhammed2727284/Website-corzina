@@ -15,6 +15,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('api/', include('api.urls'))
 ]
 
 handler404 = custom_404_view

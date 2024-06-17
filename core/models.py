@@ -21,6 +21,8 @@ class Dolg(models.Model):
     date_deleted = models.DateTimeField(blank=True, null=True, verbose_name='Дата удаление')
     user_deleted = models.ForeignKey('UserIndexMagazine', on_delete=models.CASCADE, blank=True, null=True, related_name='user_deleted', verbose_name='Кассир удаление')
 
+
+
     payment_comment = models.TextField(verbose_name='Комментарий к оплате', blank=True)
 
     def __str__(self):

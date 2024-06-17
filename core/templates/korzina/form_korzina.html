@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>корзина</title>
+</head>
+<body>
+    <h2>корзина</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="payment_comment">Комментарий к отправление в корзину:</label><br>
+        <textarea id="payment_comment" name="payment_comment" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="отправить в корзину">
+    </form>
+</body>
+</html>

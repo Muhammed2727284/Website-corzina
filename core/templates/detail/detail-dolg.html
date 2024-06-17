@@ -10,5 +10,6 @@
     <button><a href="{% url 'update-dolg' object.id %}">изменить</a></button>
     <button><a href="{% url 'pay' object.id %}">выплатил(а)</a></button>
     <button><a href="{% url 'delete-dolg' object.id %}">удалить</a></button>
+    <button><a href="{% url 'delete_korzina' object.id %}">удалить в корзину</a></button>
 
 {% endblock %}

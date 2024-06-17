@@ -186,3 +186,50 @@ def recovery_history(request, id):
 
 
 
+# Korzina
+
+@login_required
+def delete_korzina(request, id):
+    user_index_magazine = request.user.userindexmagazine_set.first()
+
+    if not user_index_magazine:
+        return HttpResponse("У текущего пользователя нет связанных данных.", status=403)
+    try:
+        dolg = Dolg.objects.get(id=id, user=user_index_magazine)
+    except Dolg.DoesNotExist:
+        return HttpResponse("Запись не найдена", status=404)
+
+    if dolg.is_deleted:
+        return HttpResponse("Клиент уже находиться в корзине")
+
+        # Получаем комментарий к оплате из POST-запроса
+    if request.method == 'POST':
+        deleted_comment = request.POST.get('payment_comment', '')
+        dolg.payment_comment = deleted_comment
+        dolg.is_deleted = True
+        dolg.save()
+        return HttpResponse("Клиент успешно отправлено в корзину")
+
+    context = {
+        'dolg': dolg,
+    }
+    return render(request, 'korzina/form_korzina.html', context)
+
+
+@login_required
+def korzina_list(request):
+    user_index_magazine = request.user.userindexmagazine_set.first()
+    korzina = Dolg.objects.filter(user=user_index_magazine, is_deleted=True)
+    return render(request, 'korzina/korzina_kist.html', {'korzina': korzina})
+
+
+@login_required
+def korzina_detail(request, id):
+    user_index_magazine = request.user.userindexmagazine_set.first()
+    try:
+        hist = Dolg.objects.get(id=id, user=user_index_magazine)
+    except Dolg.DoesNotExist:
+        return HttpResponse("Запись не найдена", status=404)
+
+    return render(request, 'korzina/korzina_detail.html', {'object': hist})
+

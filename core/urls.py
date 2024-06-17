@@ -17,4 +17,8 @@ urlpatterns = [
     path('recovery/<int:id>/', recovery_history, name="recovery"),
 
     path('success-pay/<int:id>/', successPay, name='success-pay'),
+
+    path('delete-korzina/<int:id>/', delete_korzina, name='delete_korzina'),
+    path('korzina-list/', korzina_list, name="korzina_list"),
+    path('korzina-detail/<int:id>/', korzina_detail, name='korzina_detail'),
 ]

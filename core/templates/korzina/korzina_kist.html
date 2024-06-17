@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<h1>список удаленных данные</h1>
+    <h2>корзина</h2>
+
+    
+    {% for data in korzina %}
+        <a href="{% url 'korzina_detail' data.id %}"><p>{{ data }}</p></a>
+    {% endfor %}
+{% endblock %}
