@@ -1,11 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>404 - Страница не найдена</title>
-</head>
-<body>
-    <h1>404 - Страница не найдена</h1>
-    <p>Извините, запрашиваемая страница не найдена.</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}404 - Страница не найдена{% endblock %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --error-gradient: linear-gradient(135deg, #ff416c, #ff4b2b);
+    }
+    
+    body {
+        background: var(--primary-gradient);
+        min-height: 100vh;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    
+    .error-container {
+        max-width: 600px;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .error-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .error-icon {
+        font-size: 5rem;
+        color: #ff416c;
+        margin-bottom: 1.5rem;
+        animation: shake 0.5s ease-in-out infinite alternate;
+    }
+    
+    .error-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 1rem;
+    }
+    
+    .error-text {
+        font-size: 1.1rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-home {
+        background: var(--error-gradient);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .btn-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 65, 108, 0.4);
+        color: white;
+    }
+    
+    @keyframes shake {
+        0% { transform: rotate(-5deg); }
+        100% { transform: rotate(5deg); }
+    }
+    
+    .error-code {
+        font-size: 6rem;
+        font-weight: 800;
+        background: var(--error-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+</style>
+
+<div class="error-container animate__animated animate__fadeIn">
+    <div class="error-card">
+        <div class="error-code">404</div>
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h1 class="error-title">Страница не найдена</h1>
+        <p class="error-text">Извините, запрашиваемая страница не существует или была перемещена.</p>
+        <a href="{% url 'list-dolg' %}" class="btn-home">
+            <i class="fas fa-home me-2"></i> На главную
+        </a>
+    </div>
+</div>
+
+<!-- Font Awesome для иконок -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}

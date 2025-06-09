@@ -1,13 +1,76 @@
+<!-- 3) detail_history.html -->
 {% extends 'base.html' %}
 
-{% block title %}Главная страница{% endblock %}
-
+{% block title %}История платежа{% endblock %}
 
 {% block content %}
-<h1>detail history</h1>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --success-gradient: linear-gradient(135deg, #4CAF50, #8BC34A);
+    }
+    
+    body {
+        background: var(--primary-gradient);
+        min-height: 100vh;
+        color: #fff;
+    }
+    
+    .history-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 600px;
+        margin: 3rem auto;
+    }
+    
+    .history-title {
+        color: #6a11cb;
+        margin-bottom: 1.5rem;
+    }
+    
+    .history-details {
+        color: #495057;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-recovery {
+        background: var(--success-gradient);
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-back {
+        background: transparent;
+        color: #6a11cb;
+        border: 2px solid #6a11cb;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+</style>
 
-    <p>{{ object }}</p>
-    <button><a href="{% url 'recovery' object.id %}">Востоновить</a></button>
-    <button><a href="{% url 'history-list' %}">в список оплат</a></button>
+<div class="container animate__animated animate__fadeIn">
+    <div class="history-card text-center">
+        <h3 class="history-title">Детали платежа</h3>
+        <div class="history-details">
+            <p class="fs-5">{{ object }}</p>
+        </div>
+        
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'recovery' object.id %}" class="btn btn-recovery rounded-pill">
+                <i class="fas fa-undo me-1"></i> Восстановить
+            </a>
+            <a href="{% url 'history-list' %}" class="btn btn-back rounded-pill">
+                <i class="fas fa-list me-1"></i> К списку платежей
+            </a>
+        </div>
+    </div>
+</div>
 
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 {% endblock %}

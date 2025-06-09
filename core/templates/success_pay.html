@@ -1,16 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Оплата</title>
-</head>
-<body>
-    <h2>Оплата</h2>
-    <form method="post">
-        {% csrf_token %}
-        <label for="payment_comment">Комментарий к оплате:</label><br>
-        <textarea id="payment_comment" name="payment_comment" rows="4" cols="50"></textarea><br>
-        <input type="submit" value="Оплатить">
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Оплата{% endblock %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Оплата</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="payment_comment" class="form-label">Комментарий к оплате:</label>
+                            <textarea id="payment_comment" name="payment_comment" class="form-control" rows="4" placeholder="Введите ваш комментарий..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">Оплатить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
